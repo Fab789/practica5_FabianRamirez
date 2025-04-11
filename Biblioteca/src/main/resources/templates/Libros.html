@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Libros</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <h2>Listado de Libros</h2>
+    <table>
+        <tr><th>Título</th><th>Autor</th><th>Categoría</th><th>Estado</th></tr>
+        <tr th:each="libro : ${libros}">
+            <td th:text="${libro.titulo}"></td>
+            <td th:text="${libro.autor}"></td>
+            <td th:text="${libro.categoria.nombre}"></td>
+            <td th:text="${libro.disponible ? 'Disponible' : 'Prestado'}"></td>
+        </tr>
+    </table>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
